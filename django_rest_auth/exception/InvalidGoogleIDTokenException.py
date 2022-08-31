@@ -1,0 +1,2 @@
+class InvalidGoogleIDTokenException(Exception):
+    pass
