@@ -6,6 +6,7 @@ from .exception.InvalidGoogleAuthCodeException import InvalidGoogleAuthCodeExcep
 from .exception.InvalidGoogleIDTokenException import InvalidGoogleIDTokenException
 from .settings import CLIENT_ID, CLIENT_SECRET
 import requests
+import uuid
 
 GOOGLE_AUTH_TOKEN_URL = 'https://oauth2.googleapis.com/token?'
 GRANT_TYPE = 'authorization_code'
@@ -60,7 +61,10 @@ def get_or_create_user(user_data):
     else:
         first_name = user_data.get('given_name')
         last_name = user_data.get('family_name')
-        user = User(email=user_email, first_name=first_name, last_name=last_name)
+        user = User(email=user_email,
+                    first_name=first_name,
+                    last_name=last_name,
+                    username=str(uuid.uuid4()))
         user.save()
         return user
 
