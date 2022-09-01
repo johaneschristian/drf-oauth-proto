@@ -43,7 +43,7 @@ def google_get_id_token_from_auth_code(auth_code: str) -> str:
 
 
 def google_get_profile_from_id_token(identity_token: str) -> dict:
-    identity_info: dict = id_token.verify_oauth2_token(identity_token, google_requests.Request(), CLIENT_ID)
+    identity_info = id_token.verify_oauth2_token(identity_token, google_requests.Request(), CLIENT_ID)
     if not identity_info.get('sub'):
         raise InvalidGoogleIDTokenException
 
@@ -56,6 +56,7 @@ def get_or_create_user(user_data):
 
     if len(found_user) > 0:
         return found_user[0]
+
     else:
         first_name = user_data.get('given_name')
         last_name = user_data.get('family_name')

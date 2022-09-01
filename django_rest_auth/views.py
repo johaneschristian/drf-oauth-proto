@@ -1,5 +1,6 @@
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
 from django.shortcuts import redirect
 from .utils import (
     google_get_id_token_from_auth_code,
@@ -23,3 +24,11 @@ def login_callback(request):
     response.set_cookie('tokens', tokens)
 
     return response
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def restricted_access_check(request):
+    return Response(data={
+        'email': request.user.email
+    })
