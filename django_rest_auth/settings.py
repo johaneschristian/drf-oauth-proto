@@ -163,5 +163,5 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CLIENT_ID = os.getenv('CLIENT_ID')
-CLIENT_SECRET = os.getenv('CLIENT_SECRET')
+CLIENT_ID = '147716362858-9ov1h67jo0t981lf854ugb32p9qmuodp.apps.googleusercontent.com'  # os.getenv('CLIENT_ID')
+CLIENT_SECRET = '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'  # os.getenv('CLIENT_SECRET')

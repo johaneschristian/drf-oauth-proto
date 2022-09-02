@@ -21,7 +21,8 @@ def login_callback(request):
     tokens = get_tokens_for_user(user)
 
     response = redirect(CLIENT_CALLBACK_API)
-    response.set_cookie('tokens', tokens)
+    response.set_cookie('accessToken', tokens.get('access'))
+    response.set_cookie('refreshToken', tokens.get('refresh'))
 
     return response
 
